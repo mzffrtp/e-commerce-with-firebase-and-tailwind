@@ -8,26 +8,30 @@ import Products from "./Components/Products/Products";
 import SignUp from "./Components/Navbar/Components/SignUp";
 import Login from "./Components/Navbar/Components/Login";
 import HomePage from "./Pages/mainPage/HomePage";
-import NotFound from "./Components/NotFound"
+import NotFound from "./Components/NotFound";
+import Navbar from "./Components/Navbar/Navbar";
+
 
 
 
 function App() {
   return (
     <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<HomePage />} />
+      <Navbar />
 
-      <Route path={"/products"}>
-        <Route index element={<Products />} />
-      </Route>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
 
-      <Route path="/signup" element={<SignUp />} />
-      <Route path= "/login" element={<Login />} />
-      
-      <Route element={<NotFound />} />
+        <Route path={"/products"}>
+          <Route index element={<Products />} />
+        </Route>
 
-    </Routes>
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/login" element={<Login />} />
+
+        <Route element={<NotFound />} />
+
+      </Routes>
     </BrowserRouter>
   );
 }

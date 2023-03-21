@@ -1,0 +1,21 @@
+*{
+    padding:0px;
+    margin:0px;
+    box-sizing: border-box;
+}
+.navWrapper {
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.logoWrapper{
+    display: flex;
+    justify-content: center;
+}
+
+.logoName{
+    width:7rem;
+    margin:auto;
+}
+

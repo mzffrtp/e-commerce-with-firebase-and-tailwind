@@ -6,17 +6,16 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 
 /*pages and components */
 import GeneralModal from "../../GeneralModal";
-import Navbar from "../Navbar";
 
 /* redux */
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import actionTypes from "../../../redux/actionTypes/actionTypes";
 
 /* routing */
 import { useNavigate } from "react-router-dom";
 
 /* firebase */
-import { auth, providerGoogle, userInfo } from "../../../firebase/FirebaseConfiq";
+import { userInfo } from "../../../firebase/FirebaseConfiq";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
@@ -55,6 +54,7 @@ export default function Login() {
                     setSuccessMessage(true)
                     dispatch({
                         type:actionTypes.loginActions.LOGIN_SUCCESS})
+                        navigate("/")
                 })
                 .catch((e) => {
                     setErrorModal(true)
@@ -68,7 +68,6 @@ export default function Login() {
     }
     return (
         <Container>
-            <Navbar />
             <Container className="my-5" style={{ backgroundColor: "azure" }}>
                 <Row className="justify-content-center">
                     <Col>
