@@ -11,7 +11,7 @@ import HomePage from "./Pages/mainPage/HomePage";
 import NotFound from "./Components/NotFound";
 import Navbar from "./Components/Navbar/Navbar";
 
-
+/* redux, react redux */
 
 
 function App() {

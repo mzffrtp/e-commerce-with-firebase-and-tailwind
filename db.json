@@ -1,0 +1,13 @@
+{
+    "products":[
+        {
+            "id": "1",
+            "title": "HTML Nedir?",
+            "description": "Egestas ligula malesuada nullam metus quam eros ut. Orci non dolor sem tincidunt aliquam venenatis tortor. Ultricies ullamcorper tortor imperdiet vehicula egestas ad tortor, orci praesent curae; mi.",
+            "content": "daesent curae; mi.Egestas ligula malesuada nullam metus quam eros ut. Orci non dolor sem tincidunt aliquam venenatis tortor. Ultricies ullamcorper tortor imperdiet vehicula egestas ad tortor, orci praesent curae; mi.",
+            "img":"https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/2048px-HTML5_logo_and_wordmark.svg.png",
+            "categoryId": "1",
+            "userId": "1"  
+          }
+    ]
+}

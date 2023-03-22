@@ -28,12 +28,7 @@ const Navbar = () => {
     const [successMessage, setSuccessMessage] = useState(false);
     const navigate = useNavigate();
     const dispatch = useDispatch();
-
-    /*
-    console.log(auth);
-    console.log(auth.currentUser);
-    console.log(auth.currentUser.displayName); */
-
+    
     const handlesignout = (e) =>{
         e.preventDefault()
 
@@ -50,14 +45,15 @@ const Navbar = () => {
     return (
         <div className="navWrapper d-flex justify-content-between"
             style={{ backgroundColor: "pink" }}>
-            <div className="logoWrapper">
+            <div className="logoWrapper"
+            onClick={()=>{navigate("/")}}>
                 <div>
                     <img
                         style={{ width: "80px" }} src={logo} alt="" />
                 </div>
                 <div className="logoName text-center">
                     <p
-                        style={{ fontSize: "1.3rem" }}><span style={{ color: "red" }}>€</span>-🖐@L</p>
+                        style={{ fontSize: "1.8rem", fontWeight:"bolder" }}><span style={{ color: "red" }}>€</span>-🖐@L</p>
                 </div>
             </div>
             <div className="d-flex gap-3">
@@ -66,7 +62,7 @@ const Navbar = () => {
                         textDecoration: "none",
                         color: "black", fontSize: "1rem"
                     }}
-                    className=" mt-3 w-50 text-center"
+                    className=" btn mt-3 w-50 text-center"
                     to="/cart"><img
                         style={{ width: "60px", marginRight:"10px" }}
                         src={cart} alt=""></img>Cart</Link>

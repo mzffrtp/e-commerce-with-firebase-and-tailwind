@@ -8,7 +8,7 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 import GeneralModal from "../../GeneralModal";
 
 /* redux */
-import { useDispatch} from "react-redux";
+import { useDispatch, useSelector} from "react-redux";
 import actionTypes from "../../../redux/actionTypes/actionTypes";
 
 /* routing */
@@ -20,6 +20,7 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
 export default function Login() {
+    const {loginState} = useSelector((state)=>state)
     const [form, setForm] = useState({
         fullname: "",
         email: "",
@@ -41,7 +42,7 @@ export default function Login() {
         // handle email/password authentication on farebase
         const auth = getAuth();
         signInWithEmailAndPassword(auth, form.email, form.password)
-        .then((userCredentials) => {
+        .then((res) => {
             const userInforef = collection(userInfo, "userInfo");
             addDoc(userInforef, {
                 fullname: form.fullname,
@@ -49,17 +50,18 @@ export default function Login() {
                 password: form.password,
                 logedIn: serverTimestamp(),
             })
-
+           
                 .then((res) =>{
                     setSuccessMessage(true)
                     dispatch({
-                        type:actionTypes.loginActions.LOGIN_SUCCESS})
-                        navigate("/")
+                        type:actionTypes.loginActions.LOGIN_SUCCESS,
+                    payload:form})
                 })
                 .catch((e) => {
                     setErrorModal(true)
                     console.log(e);
                 })
+                console.log(auth)
         })
         .catch((err) => {
             console.log(err.message);
@@ -68,9 +70,10 @@ export default function Login() {
     }
     return (
         <Container>
-            <Container className="my-5" style={{ backgroundColor: "azure" }}>
+            <Container className="my-5" >
                 <Row className="justify-content-center">
-                    <Col>
+                    <Col sm xl="6"
+                    style={{ backgroundColor: "azure" }}>
                         <h3 className="text-center my-2"> Login</h3>
                         <Form>
                             <Form.Group className="mb-2" controlId="fullname">
@@ -123,7 +126,10 @@ export default function Login() {
                                     clsBtnTxt="Pls try again"
                                     clsBtnClck={() => {
                                         setErrorModal(false)
-                                        setForm("")
+                                        setForm({...form,
+                                        fullname: "",
+                                        email: "",
+                                        password: ""})
                                     }}
                                 />
                             )

@@ -29,10 +29,11 @@ const auth = getAuth(app);
 const providerGoogle = new GoogleAuthProvider();
 
 const userInfo = getFirestore(app);
+const messages = getFirestore(app);
 
 
 /*
 
 const storage = firebase.storage(); */
 
-export {auth, providerGoogle, userInfo}
+export {auth, providerGoogle, userInfo, messages}
