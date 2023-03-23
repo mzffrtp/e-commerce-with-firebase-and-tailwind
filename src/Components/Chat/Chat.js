@@ -14,7 +14,7 @@ import { messages, auth } from "../../firebase/FirebaseConfiq";
 
 const Chat = () => {
     const [showChat, setShowChat] = useState(false)
-    const [newMsg, setNewMsg] = useState(null);
+    const [newMsg, setNewMsg] = useState("");
     const [errorModal, setErrorModal] = useState(false);
     const [customerMessages, setCustomerMessages] = useState([])
     const messagesRef = collection(messages, "messages")
@@ -32,7 +32,6 @@ const Chat = () => {
             text: newMsg,
             user: auth.currentUser.displayName,
             createdAt: serverTimestamp()
-
         })
         setNewMsg("")
     }
@@ -40,16 +39,20 @@ const Chat = () => {
         const queryMesssage = query(
             messagesRef,
             orderBy("createdAt")
-        )
+        );
 
-        onSnapshot(queryMesssage,(snapshot)=>{
+        onSnapshot(queryMesssage, (snapshot) => {
             let comingMessages = []
-            snapshot.forEach((doc)=>{
-                comingMessages.push({...doc.data(), id:doc.id})
+            snapshot.forEach((doc) => {
+                comingMessages.push({ ...doc.data(), id: doc.id });
+            });
+            setCustomerMessages(comingMessages)
         });
-        setCustomerMessages(comingMessages)
-    });
-},[]);
+    }, []);
+
+    const handleClose = () => {
+        setCustomerMessages("")
+    }
     return (
         <div className="chatboxwrapper">
             <div className="chatbox"
@@ -68,15 +71,24 @@ const Chat = () => {
                                     <strong>Please write your inquiry!</strong>
                                 </p>
                                 <hr></hr>
-                                <div className="closeBtn">
+                                <div className="closeBtn"
+                                    onClick={handleClose}>
                                     <img src={close} alt="" /></div>
-                            </div>
-                            <div>
-                                {
-                                    customerMessages.map((message) =>{
-                                        <p key={message.id}>{message.text}</p>
-                                    })
-                                }
+                                <div className="messages">
+                                    {
+                                        customerMessages.map((message) => (
+                                            <div key={message.id}>
+                                                {
+                                                    auth.currentUser.displayName == message.user ? (<p className="customerMesaage">{message.text}</p>) : (
+                                                        <p>
+                                                            <span className="messageInfo">{message.user}</span> : <span className="message">{message.text}</span>
+                                                        </p>
+                                                    )
+                                                }</div>
+                                        ))
+                                    }
+                                </div>
+
                             </div>
                             <div className="chatInput">
                                 <form onSubmit={handleSubmit}>

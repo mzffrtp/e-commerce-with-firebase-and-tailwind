@@ -90,3 +90,22 @@
     top:-1rem;
     right:-20.7rem;
 }
+
+.messages {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .messageInfo {
+    font-weight: bold;
+    margin-left: 10px;
+  }
+  .customerMessage {
+    align-self: flex-end;
+    margin-right: 20px;
+    background-color: rgb(245, 76, 51);
+    color: white;
+    border-radius: 4px 4px 0 4px;
+    padding: 4px;
+  }
