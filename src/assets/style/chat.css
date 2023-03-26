@@ -49,15 +49,15 @@
 }
 
 .chatInput {
-   
-    position: relative;
-    top: 5rem;
+
+    position: fixed;
+    top: 36rem;
     background-color: azure;
     border-radius: 1rem;
 }
 
 .chatInput input {
-    width: 15rem;
+    width: 17.5rem;
     padding: 0.7rem;
     margin: 0.5rem 1rem;
     border-radius: 1rem;
@@ -142,8 +142,8 @@
     .chatInput {
         width: 26.6rem;
         height: 9vh;
-        position: relative;
-        top: 2.5rem;
+        position: fixed;
+        top: 31.7rem;
         background-color: rgb(168, 240, 240);
         border-radius: 1rem;
     }
