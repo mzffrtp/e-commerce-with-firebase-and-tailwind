@@ -13,6 +13,6 @@ Dependencies:
     firebase for google authentication, products store and keeping chat history
     UI/UX: custom css and bootstrap for responsive per different screen sizes 
 
-Enjoy scrrem gif for a short review.
+Enjoy scrren gif for a short review.
 
 ![](screen.gif)
