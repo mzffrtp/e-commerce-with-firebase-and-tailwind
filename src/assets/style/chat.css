@@ -9,16 +9,18 @@
     flex-direction: column;
     gap: 3px;
     position: fixed;
-    top: 38rem;
+    top: 34.5rem;
     right: 5px;
     display: grid;
     place-items: center;
     border-radius: 1rem;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
     padding: 0.3rem;
-    color: crimson;
+    color: yellow;
     cursor: pointer;
     z-index: 5;
+    background-color:hotpink
+
 }
 
 .chatbox img {
@@ -31,6 +33,7 @@
     display: grid;
     place-items: center;
     z-index: 10;
+    position: relative;
 }
 
 .chatRoom {
@@ -39,18 +42,24 @@
     margin: auto;
     box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
     border-radius: 1rem;
-    position: relative;
+    position: fixed;
+    top: 11rem;
+    right: 5rem;
+    background-color: aliceblue;
 }
 
 .chatInput {
+   
     position: relative;
-    top: -55px
+    top: 5rem;
+    background-color: azure;
+    border-radius: 1rem;
 }
 
 .chatInput input {
     width: 15rem;
     padding: 0.7rem;
-    margin:0rem 1rem;
+    margin: 0.5rem 1rem;
     border-radius: 1rem;
     border: none;
     background-color: cornsilk;
@@ -81,31 +90,65 @@
     transform: scale(1.05) rotate(-1deg);
 }
 
-.closeBtn{
+.closeBtn {
     position: relative;
+    max-height: 0.3rem;
 }
 
-.closeBtn img{
+.closeBtn img {
     position: relative;
-    top:-1rem;
-    right:-20.7rem;
+    top: -3rem;
+    right: -20.7rem;
 }
 
 .messages {
     flex: 1;
     display: flex;
     flex-direction: column;
-  }
+    max-height: 15rem;
+    overflow: auto;
+    padding-left: 1rem;
+}
 
-  .messageInfo {
+.messageInfo {
     font-weight: bold;
-    margin-left: 10px;
-  }
-  .customerMessage {
+    margin-left: 5rem;
+}
+
+.customerMessage {
     align-self: flex-end;
     margin-right: 20px;
-    background-color: rgb(245, 76, 51);
-    color: white;
+    color: black;
     border-radius: 4px 4px 0 4px;
     padding: 4px;
-  }
+    font-size: 0.8rem;
+    border-radius: 0.5rem;
+}
+
+@media screen and (min-width: 560px) {
+    .chatbox {
+        top: 36rem;
+        right: 5px;
+    }
+
+    .chatRoom {
+        width: 30%;
+        height: 50vh;
+        top: 9rem;
+        right: 1rem;
+        background-color: aliceblue;
+    }
+
+    .chatInput {
+        width: 26.6rem;
+        height: 9vh;
+        position: relative;
+        top: 2.5rem;
+        background-color: rgb(168, 240, 240);
+        border-radius: 1rem;
+    }
+    .chatInput input {
+        width: 19rem;
+        
+    }
+}

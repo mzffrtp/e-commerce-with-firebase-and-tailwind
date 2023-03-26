@@ -12,6 +12,7 @@ import GeneralModal from "../GeneralModal";
 import { addDoc, collection, serverTimestamp, query, orderBy, onSnapshot } from "firebase/firestore";
 import { messages, auth } from "../../firebase/FirebaseConfiq";
 
+
 const Chat = () => {
     const [showChat, setShowChat] = useState(false)
     const [newMsg, setNewMsg] = useState("");
@@ -51,7 +52,7 @@ const Chat = () => {
     }, []);
 
     const handleClose = () => {
-        setCustomerMessages("")
+       setShowChat(false)
     }
     return (
         <div className="chatboxwrapper">
@@ -70,7 +71,6 @@ const Chat = () => {
                                     Wellcome to chatroom for €-handel❣️</p><p className="text-center">
                                     <strong>Please write your inquiry!</strong>
                                 </p>
-                                <hr></hr>
                                 <div className="closeBtn"
                                     onClick={handleClose}>
                                     <img src={close} alt="" /></div>
@@ -79,18 +79,17 @@ const Chat = () => {
                                         customerMessages.map((message) => (
                                             <div key={message.id}>
                                                 {
-                                                    auth.currentUser.displayName == message.user ? (<p className="customerMesaage">{message.text}</p>) : (
-                                                        <p>
-                                                            <span className="messageInfo">{message.user}</span> : <span className="message">{message.text}</span>
+                                                    auth.currentUser.displayName == message.user ? (<p className="customerMessage"
+                                                    style={{backgroundColor:"yellow"}}><span style={{fontWeight:"bold"}}>{message.user}: </span>{message.text}</p>) : (
+                                                        <p style={{backgroundColor:"chartreuse"}}>
+                                                            <span className="messageInfo"style={{fontWeight:"bold"}}>Customer Service: </span > <span className="message">{message.text}</span>
                                                         </p>
                                                     )
                                                 }</div>
                                         ))
                                     }
                                 </div>
-
-                            </div>
-                            <div className="chatInput">
+                                <div className="chatInput">
                                 <form onSubmit={handleSubmit}>
                                     <input
                                         value={newMsg}
@@ -101,6 +100,8 @@ const Chat = () => {
                                         className="sendBtn" >Send</button>
                                 </form>
                             </div>
+                            </div>
+                            
                         </div>
                     )
                 }
